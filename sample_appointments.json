@@ -1,0 +1,26 @@
+[
+  {
+    "client_phone": "123456789",
+    "service_id": 1,
+    "barber_id": 1,
+    "start": "2025-11-20T15:00",
+    "end": "2025-11-20T15:30",
+    "status": "confirmed"
+  },
+  {
+    "client_phone": "123456788",
+    "service_id": 2,
+    "barber_id": 1,
+    "start": "2025-11-21T18:00",
+    "end": "2025-11-21T18:45",
+    "status": "no_show"
+  },
+  {
+    "client_phone": "123456787",
+    "service_id": 3,
+    "barber_id": 1,
+    "start": "2025-11-22T18:00",
+    "end": "2025-11-22T18:45",
+    "status": "confirmed"
+  }
+]

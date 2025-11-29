@@ -1,0 +1,90 @@
+{
+  "shops": {
+    "1": {
+      "name": "Pozuelo Barbershop"
+    },
+    "2": {
+      "name": "La Moraleja Barbershop"
+    }
+  },
+  "barbers": {
+    "ivan@gmail.com": {
+      "barber_id": 1,
+      "shop_id": 1,
+      "name": "Ivan",
+      "password": "ivan123"
+    },
+    "david@gmail.com": {
+      "barber_id": 2,
+      "shop_id": 1,
+      "name": "David",
+      "password": "david123"
+    },
+    "laura@gmail.com": {
+      "barber_id": 3,
+      "shop_id": 1,
+      "name": "Laura",
+      "password": "laura123"
+    },
+    "pedro@gmail.com": {
+      "barber_id": 4,
+      "shop_id": 2,
+      "name": "Pedro",
+      "password": "pedro123"
+    },
+    "marta@gmail.com": {
+      "barber_id": 5,
+      "shop_id": 2,
+      "name": "Marta",
+      "password": "marta123"
+    }
+  },
+  "services": {
+    "1": {
+      "name": "Haircut",
+      "price": 15,
+      "duration": 30
+    },
+    "2": {
+      "name": "Haircut + Beard",
+      "price": 25,
+      "duration": 45
+    },
+    "3": {
+      "name": "Beard Trim",
+      "price": 10,
+      "duration": 15
+    },
+    "4": {
+      "name": "Haircut + Eyebrows",
+      "price": 18,
+      "duration": 40
+    }
+  },
+  "clients": {
+    "67750187": {
+      "name": "Client 67750187",
+      "created": "2025-11-25"
+    },
+    "675570187": {
+      "name": "Client 675570187",
+      "created": "2025-11-25"
+    }
+  },
+  "appointments": [
+    {
+      "client_phone": "67750187",
+      "service_id": 4,
+      "barber_id": 1,
+      "date": "",
+      "time": ""
+    },
+    {
+      "client_phone": "675570187",
+      "service_id": 1,
+      "barber_id": 1,
+      "date": "2025-11-25",
+      "time": "15:00"
+    }
+  ]
+}

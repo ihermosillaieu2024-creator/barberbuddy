@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Haircut",
+    "price": 15,
+    "duration_minutes": 30
+  },
+  {
+    "id": 2,
+    "name": "Haircut + Beard",
+    "price": 25,
+    "duration_minutes": 45
+  },
+  {
+    "id": 3,
+    "name": "Hair Dye",
+    "price": 30,
+    "duration_minutes": 60
+  }
+]
