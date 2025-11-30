@@ -1,46 +1,49 @@
 from datetime import date as _date
-import json, os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-DB_FILE = os.path.join(BASE_DIR, "resources", "barberbot_db.json")
-print("[DEBUG] Using DB at:", DB_FILE)
+from pathlib import Path
+import json
+
+# === RUTA PORTABLE A LA DB (misma carpeta que este .py) ===
+DB_FILE = Path(__file__).with_name("barberbot_db.json")
+print("[DEBUG] Using DB at:", DB_FILE.resolve())
+
 def _fresh_db():
-   return {
-       "shops": {
-           "1": {"name": "Pozuelo Barbershop"},
-           "2": {"name": "La Moraleja Barbershop"},
-       },
-       "barbers": {
-
-           "ivan@gmail.com":   {"barber_id": 1, "shop_id": 1, "name": "Ivan",   "password": "ivan123"},
-           "david@gmail.com":  {"barber_id": 2, "shop_id": 1, "name": "David",  "password": "david123"},
-           "laura@gmail.com":  {"barber_id": 3, "shop_id": 1, "name": "Laura",  "password": "laura123"},
-
-           "pedro@gmail.com":  {"barber_id": 4, "shop_id": 2, "name": "Pedro",  "password": "pedro123"},
-           "marta@gmail.com":  {"barber_id": 5, "shop_id": 2, "name": "Marta",  "password": "marta123"},
-       },
-       "services": {
-           "1": {"name": "Haircut",              "price": 15, "duration": 30},
-           "2": {"name": "Haircut + Beard",      "price": 25, "duration": 45},
-           "3": {"name": "Beard Trim",           "price": 10, "duration": 15},
-           "4": {"name": "Haircut + Eyebrows",   "price": 18, "duration": 40},
-       },
-       "clients": {},
-       "appointments": [],
-   }
+    return {
+        "shops": {
+            "1": {"name": "Pozuelo Barbershop"},
+            "2": {"name": "La Moraleja Barbershop"},
+        },
+        "barbers": {
+            "ivan@gmail.com":   {"barber_id": 1, "shop_id": 1, "name": "Ivan",   "password": "ivan123"},
+            "david@gmail.com":  {"barber_id": 2, "shop_id": 1, "name": "David",  "password": "david123"},
+            "laura@gmail.com":  {"barber_id": 3, "shop_id": 1, "name": "Laura",  "password": "laura123"},
+            "pedro@gmail.com":  {"barber_id": 4, "shop_id": 2, "name": "Pedro",  "password": "pedro123"},
+            "marta@gmail.com":  {"barber_id": 5, "shop_id": 2, "name": "Marta",  "password": "marta123"},
+        },
+        "services": {
+            "1": {"name": "Haircut",              "price": 15, "duration": 30},
+            "2": {"name": "Haircut + Beard",      "price": 25, "duration": 45},
+            "3": {"name": "Beard Trim",           "price": 10, "duration": 15},
+            "4": {"name": "Haircut + Eyebrows",   "price": 18, "duration": 40},
+        },
+        "clients": {},
+        "appointments": [],
+    }
 
 def _load_db():
-   if not os.path.exists(DB_FILE):
-       print("[DEBUG] DB not found, creating fresh one...")
-       db = _fresh_db()
-       _save_db(db)
-       return db
-   with open(DB_FILE, "r", encoding="utf-8") as f:
-       return json.load(f)
+    if not DB_FILE.exists():
+        print("[DEBUG] DB not found, creating fresh one...")
+        db = _fresh_db()
+        _save_db(db)
+        return db
+    with DB_FILE.open("r", encoding="utf-8") as f:
+        return json.load(f)
 
 def _save_db(db):
-   with open(DB_FILE, "w", encoding="utf-8") as f:
-       json.dump(db, f, indent=2, ensure_ascii=False)
-   print("[DEBUG] DB saved.")
+    # por si la carpeta no existe (útil si usas data/)
+    DB_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with DB_FILE.open("w", encoding="utf-8") as f:
+        json.dump(db, f, indent=2, ensure_ascii=False)
+    print("[DEBUG] DB saved.")
 
 
 DB = _load_db()
